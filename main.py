@@ -2,7 +2,7 @@ from telegram.ext import Updater, CommandHandler
 import logging
 
 
-token_d = "1449579824:AAGBBvapLkt0u3oQbqyedGBxUnLYYWOCGkk"
+token_d = ""
 
 # Lo primero que definimos es el manejador de Actualizaciones
 updater = Updater(token=token_d , use_context=True)
