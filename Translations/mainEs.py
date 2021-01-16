@@ -24,12 +24,4 @@ def sentece_maker(param):
     separator = ' '
     print(separator.join(param), sep='\n' )
 
-def new_line():
-    words = get_words()
-    upper_words = get_uppercase(get_words())
-    print(upper_words)
-    for i in words:
-      if i in upper_words:
-          sentece_maker(words)
-
 sentece_maker(get_words())
