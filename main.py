@@ -1,33 +1,45 @@
-from telegram.ext import Updater, CommandHandler
 import logging
 
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
-token_d = ""
+import mainEn
+import mainEs
 
-# Lo primero que definimos es el manejador de Actualizaciones
-updater = Updater(token=token_d , use_context=True)
-
-# Conectamos el Updater con el Dispatcher
-dispatcher = updater.dispatcher
-
-# Muestra por pantalla diferentes excepciones, en un formato adaptado
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
+)
 
 
+logger = logging.getLogger(__name__)
 
-def start(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Bienvenido a Pyctionariy Bot ")
 
-def english_search(update, context):
-    # context.args 
-    # recibira la entrada del usuario despues de /b como lista
-    # context.bot.send_message(chat_id=update.effective_chat.id, text = "") 
-    # para mostrar el mensaja con la definicion
+def start(update: Update, context: CallbackContext) -> None:
+    update.message.reply_text("Bienvenido a Pyctionary,\n ejemplos de busqueda: \n Ingles: /s <palabra> \n /s automobile \n ------ \n Espaniol: /b <palabra> \n /b luz \n\n Bot hecho por: Gustavo Barboza B. y Manuel Berganza")
 
-start_handler = CommandHandler('start', start)
-start_handler = CommandHandler('b', spanish_search)
-start_handler = CommandHandler('s', english_search)
-dispatcher.add_handler(start_handler)
 
-updater.start_polling()
+def get_en(update: Update, context: CallbackContext):
+    update.message.reply_text(mainEn.get_req(context.args[0]))
 
+def get_es(update: Update, context: CallbackContext):
+    update.message.reply_text(mainEs.get_req(context.args[0]))
+
+
+def main():
+
+    updater = Updater("1449579824:AAGBBvapLkt0u3oQbqyedGBxUnLYYWOCGkk", use_context=True)
+
+    dispatcher = updater.dispatcher
+
+    dispatcher.add_handler(CommandHandler("start", start))
+    dispatcher.add_handler(CommandHandler("s", get_en))
+    dispatcher.add_handler(CommandHandler("b", get_es))
+
+    updater.start_polling()
+
+    updater.idle()
+
+
+
+if __name__ == '__main__':
+    main()
