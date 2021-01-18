@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 def start(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text("Bienvenido a Pyctionary,\n ejemplos de busqueda: \n Ingles: /s <palabra> \n /s automobile \n ------ \n Espaniol: /b <palabra> \n /b luz \n\n Bot hecho por: Gustavo Barboza B. y Manuel Berganza")
+    update.message.reply_text("Bienvenido a Pyctionary,\n Ejemplo de búqueda: \n Inglés: /s <palabra> \n /s automobile \n ------ \n Español: /b <palabra> \n /b luz \n\n Bot Created By: Gustavo Barboza B. y Manuel Berganza")
 
 
 def get_en(update: Update, context: CallbackContext):
