@@ -2,7 +2,7 @@ Pyctionary es un bot de telegram que funciona como un diccionario de español e 
 
 Pyctionary is a telegram bot that works as a dictionary in english and spanish.
 
-Data is scrapped from: 
+the data is extracted from: 
     https://www.dictionary.com
     AND
     https://dle.rae.es
